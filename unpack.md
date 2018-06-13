@@ -3,7 +3,7 @@
 
 # Giải nén dữ liệu nhị phân trong PHP
 
-Trong PHP hiếm khi có yêu cầu làm việc với file nhị phân. Tuy nhiên, khi cần thì hàm 'pack' và 'unpack' trong PHP có thể gíup ích đáng kể. Để chuẩn bị, ta sẽ bắt đầu với một vấn đề lập trình, điều này sẽ gíup cuộc thảo luận luôn gắn với một bối cảnh liên quan. VấVấn đề là thế này: Chúng tôi muốn viết một hàm mà phải mất một tập tin hình ảnh như một cuộc tranh cãi và cho chúng ta biết liệu các tập tin là một hình ảnh GIF; không liên quan với bất kỳ phần mở rộng nào mà tệp có thể có. Chúng tôi không sử dụng bất kỳ hàm nào của thư viện GD.
+Trong PHP hiếm khi có yêu cầu làm việc với file nhị phân. Tuy nhiên, khi cần thì hàm 'pack' và 'unpack' trong PHP có thể gíup ích đáng kể. Để chuẩn bị, ta sẽ bắt đầu với một vấn đề lập trình, điều này sẽ gíup cuộc thảo luận luôn gắn với một bối cảnh liên quan. Vấn đề là thế này: Chúng ta muốn viết một hàm nhận một file ảnh làm tham số đầu vào và kết quả sẽ cho chúng ta biết liệu file đó có là ảnh GIF hay không.; không liên quan với bất kỳ phần mở rộng nào mà tệp có thể có. Chúng tôi không sử dụng bất kỳ hàm nào của thư viện GD.
 
 #### Header tệp GIF
 
@@ -33,7 +33,7 @@ Vậy để kiểm tra xem liệu một tệp ảnh là tệp chuẩn GIF hay kh
 
 #### Sử dụng hàm unpack()
 
-[unpack()][3] là sự bổ sung của [pack()][4] - nó chuyển hóa dữ liệu nhị phân thành mảng dựa trên định dạng cho trước. Điều này có điểm giống với _sprintf_, chuyển hóa dữ liệu chuỗi theo một vài định dạng cho trước. Hai hàm này cho phép chúng ta đọc và viết các bộ đệm nhị phâm theo định dạng chuỗi cho trước. Điều dễ dàng cho phép một lập trình viên trao đổi dữ liệu giữa các chương trình được viết bằng các ngôn ngữ hoặc định dạng khác nhau. Hãy cùng xem ví dụ nhỏ sau đây.
+[unpack()][3] là sự bổ sung của [pack()][4] - nó chuyển hóa dữ liệu nhị phân thành mảng dựa trên định dạng cho trước. Điều này có điểm giống với _sprintf_, chuyển hóa dữ liệu chuỗi theo một vài định dạng cho trước. Hai hàm này cho phép chúng ta đọc và ghi các bộ đệm nhị phâm theo định dạng chuỗi cho trước. Điều này dễ dàng cho phép một lập trình viên trao đổi dữ liệu giữa các chương trình được viết bằng các ngôn ngữ hoặc định dạng khác nhau. Hãy cùng xem ví dụ nhỏ sau đây.
       
     $data = unpack('C*', 'codediesel');
     var_dump($data);
