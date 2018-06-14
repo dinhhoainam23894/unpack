@@ -3,7 +3,7 @@
 
 # Giải nén dữ liệu nhị phân trong PHP
 
-Trong PHP hiếm khi có yêu cầu làm việc với file nhị phân. Tuy nhiên, khi cần thì hàm 'pack' và 'unpack' trong PHP có thể gíup ích đáng kể. Để chuẩn bị, ta sẽ bắt đầu với một vấn đề lập trình, điều này sẽ gíup cuộc thảo luận luôn gắn với một bối cảnh liên quan. VấVấn đề là thế này: Chúng tôi muốn viết một hàm mà phải mất một tập tin hình ảnh như một cuộc tranh cãi và cho chúng ta biết liệu các tập tin là một hình ảnh GIF; không liên quan với bất kỳ phần mở rộng nào mà tệp có thể có. Chúng tôi không sử dụng bất kỳ hàm nào của thư viện GD.
+Trong PHP hiếm khi có yêu cầu làm việc với file nhị phân. Tuy nhiên, khi cần thì hàm 'pack' và 'unpack' trong PHP có thể gíup ích đáng kể. Để chuẩn bị, ta sẽ bắt đầu với một vấn đề lập trình, điều này sẽ gíup cuộc thảo luận luôn gắn với một bối cảnh liên quan. Vấn đề là thế này: Chúng ta muốn viết một hàm mà phải mất một tập tin hình ảnh như một cuộc tranh cãi và cho chúng ta biết liệu các tập tin là một hình ảnh GIF; không liên quan với bất kỳ phần mở rộng nào mà tệp có thể có. Chúng ta không sử dụng bất kỳ hàm nào của thư viện GD.
 
 #### Header tệp GIF
 
@@ -33,7 +33,7 @@ Vậy để kiểm tra xem liệu một tệp ảnh là tệp chuẩn GIF hay kh
 
 #### Sử dụng hàm unpack()
 
-[unpack()][3] là sự bổ sung của [pack()][4] - nó chuyển hóa dữ liệu nhị phân thành mảng dựa trên định dạng cho trước. Điều này có điểm giống với _sprintf_, chuyển hóa dữ liệu chuỗi theo một vài định dạng cho trước. Hai hàm này cho phép chúng ta đọc và viết các bộ đệm nhị phâm theo định dạng chuỗi cho trước. Điều dễ dàng cho phép một lập trình viên trao đổi dữ liệu giữa các chương trình được viết bằng các ngôn ngữ hoặc định dạng khác nhau. Hãy cùng xem ví dụ nhỏ sau đây.
+[unpack()][3] là hàm bổ sung của [pack()][4] - nó chuyển hóa dữ liệu nhị phân thành mảng dựa trên các định dạng cho trước. Điều này có điểm giống với _sprintf_, chuyển hóa dữ liệu chuỗi về một vài định dạng cho trước. Hai hàm này cho phép chúng ta đọc và viết các bộ đệm nhị phân theo định dạng chuỗi cho trước. Điều này cho phép một lập trình viên dễ dàng trao đổi dữ liệu giữa các chương trình được viết bằng các ngôn ngữ hoặc định dạng khác nhau. Hãy cùng xem ví dụ nhỏ sau đây.
       
     $data = unpack('C*', 'codediesel');
     var_dump($data);
@@ -52,7 +52,7 @@ Vậy để kiểm tra xem liệu một tệp ảnh là tệp chuẩn GIF hay kh
       9 => int 101
       10 => int 108
 
-Trong ví dụ trên, đối số đầu tiên là chuỗi định dạng và thứ hai là dữ liệu thực tế. Chuỗi định dạng xác định cách phân tích cú pháp đối số dữ liệu. Trong ví dụ này, phần đầu tiên của định dạng ‘C’, chỉ định rằng chúng ta nên xử lý ký tự đầu tiên của dữ liệu dưới dạng một byte không dấu. Phần tiếp theo ‘*’, yêu cầu hàm áp dụng mã định dạng được chỉ định trước đó cho tất cả các ký tự còn lại.
+Trong ví dụ trên, đối số đầu tiên là chuỗi định dạng và thứ hai là dữ liệu thực tế. Chuỗi định dạng xác định cách phân tích cú pháp đối số dữ liệu. Trong ví dụ này, phần đầu tiên có định dạng ‘C’, chỉ định rằng chúng ta nên xử lý ký tự đầu tiên của dữ liệu dưới dạng một byte không dấu. Phần tiếp theo ‘*’, yêu cầu hàm áp dụng mã định dạng được chỉ định trước đó cho tất cả các ký tự còn lại.
 
 Mặc dù điều này có vẻ khó hiểu, phần tiếp theo cung cấp một ví dụ cụ thể hơn.
 
@@ -86,7 +86,7 @@ Dưới đây là gỉai pháp cho vấn đề GIF của chúng ta sử dụng h
 
 Dòng code quan trọng cần lưu ý là dòng khai báo định dạng. 'A6' chỉ định rằng hàm unpack() lấy 6 bytes đầu tiên của dữ liệu và gỉai mã chúng thành dạng chuỗi. Dữ liệu lấy được sẽ được lưu trong mảng với khóa tên là 'version'.
 
-Một ví dụ khác được cho như bên dưới. Nó sẽ trả về thêm các thông tin header khác của file GIF, bao gồm độ rộng và độ dài của ảnh.
+Một ví dụ khác được cho như bên dưới. Nó sẽ trả về thêm các thông tin khác trong header của file GIF, bao gồm độ rộng và độ dài của ảnh.
  
     function get_gif_header($image_file)
     {
